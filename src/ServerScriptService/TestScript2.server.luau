@@ -1,0 +1,1 @@
+print("[TestScript2] Running! ServerScriptService children: " .. #game:GetService("ServerScriptService"):GetChildren())

@@ -1,0 +1,1 @@
+rint("[WorkspaceTestScript] Running! Workspace children: " .. #workspace:GetChildren())
