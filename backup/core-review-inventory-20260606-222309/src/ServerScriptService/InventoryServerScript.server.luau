@@ -9,8 +9,6 @@ local QuestEvents = ServerStorage:WaitForChild("QuestEvents")
 local inventoryEvent = ReplicatedStorage:WaitForChild("InventoryAction")
 local itemStardustEvent = ReplicatedStorage:WaitForChild("ItemStardustEvent")
 
-local addItem
-
 -- Listen for quest item rewards (from QuestManager)
 -- Use WaitForChild to ensure QuestManager has created the event first
 local questItemRewardEvent = ServerStorage:WaitForChild("QuestItemReward")
@@ -44,7 +42,7 @@ local function getInventory(player)
 	return playerInventories[player]
 end
 
-function addItem(player, itemName, quantity)
+local function addItem(player, itemName, quantity)
 	local inventory = getInventory(player)
 	inventory[itemName] = (inventory[itemName] or 0) + quantity
 	inventoryEvent:FireClient(player, "InventoryUpdate", inventory)

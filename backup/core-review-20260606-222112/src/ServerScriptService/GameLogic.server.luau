@@ -29,7 +29,6 @@ local gameAction = ReplicatedStorage:WaitForChild("GameAction")
 local stardustSync = ReplicatedStorage:WaitForChild("StardustSync")
 local tutorialSync = ReplicatedStorage:WaitForChild("TutorialSync")
 local inventoryAction = ReplicatedStorage:WaitForChild("InventoryAction")
-local itemStardustEvent = ReplicatedStorage:WaitForChild("ItemStardustEvent")
 
 -- PetSpawnEvent for 3D pet following
 local petSpawnEvent = Instance.new("BindableEvent")
@@ -204,8 +203,6 @@ local function checkGamepasses(player)
 end
 
 -- Click System
-local getPetMultiplier
-
 local function calculateClickReward(player)
 	local data = playerDataCache[player.UserId]
 	if not data then return 0 end
@@ -273,7 +270,7 @@ local function addXP(player, amount)
 end
 
 -- Pet System
-function getPetMultiplier(rarity)
+local function getPetMultiplier(rarity)
 	local multipliers = {
 		["Common"] = 1,
 		["Raro"] = 2,
@@ -461,18 +458,6 @@ end
 _G.savePlayerData = savePlayerData
 _G.syncToClient = syncToClient
 _G.notifyPetSpawn = notifyPetSpawn
-
-itemStardustEvent.Event:Connect(function(player, amount)
-	local data = playerDataCache[player.UserId]
-	local stardustAmount = tonumber(amount) or 0
-	if not data or stardustAmount <= 0 then
-		return
-	end
-
-	data.stardust = data.stardust + stardustAmount
-	data.totalEarned = data.totalEarned + stardustAmount
-	syncToClient(player)
-end)
 
 -- Game Action Handler
 gameAction.OnServerEvent:Connect(function(player, action, ...)
