@@ -6,7 +6,22 @@
       "$path": "src/ServerScriptService"
     },
     "ReplicatedStorage": {
-      "$path": "src/ReplicatedStorage"
+      "$className": "ReplicatedStorage",
+      "EggConfig": {
+        "$path": "src/ReplicatedStorage/EggConfig.luau"
+      },
+      "QuestDefinitions": {
+        "$path": "src/ReplicatedStorage/QuestDefinitions.luau"
+      },
+      "StardustConfig": {
+        "$path": "src/ReplicatedStorage/StardustConfig.luau"
+      },
+      "StardustStyle": {
+        "$path": "src/ReplicatedStorage/StardustStyle.luau"
+      },
+      "StardustUI": {
+        "$path": "src/ReplicatedStorage/StardustUI"
+      }
     },
     "StarterPlayer": {
       "$className": "StarterPlayer",
